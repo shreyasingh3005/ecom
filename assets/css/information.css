@@ -1,0 +1,143 @@
+/* Ivory / forest / copper palette for informational and support pages only.
+   Loaded after the shared theme; commerce and admin routes retain their theme. */
+:root {
+    color-scheme: light;
+    --theme-bg: #f5f1e8;
+    --theme-bg-gradient: none;
+    --theme-surface: #fffcf6;
+    --theme-surface-card: #fffcf6;
+    --theme-surface-hover: #e9eee5;
+    --theme-border: #d7dcd1;
+    --theme-border-hover: #8ca295;
+    --theme-primary: #163d35;
+    --theme-primary-hover: #24564a;
+    --theme-primary-glow: rgb(22 61 53 / 12%);
+    --theme-gold: #8c4e2e;
+    --theme-gold-hover: #713b22;
+    --theme-gold-glow: rgb(184 117 80 / 12%);
+    --theme-text: #163d35;
+    --theme-text-secondary: #506158;
+    --theme-text-muted: #5d6a62;
+    --theme-success: #246444;
+    --theme-danger: #a42c34;
+    --shadow-card: 0 8px 28px rgb(22 61 53 / 5%);
+    --shadow-hover: 0 16px 40px rgb(22 61 53 / 10%);
+}
+
+body { background-attachment: scroll !important; }
+::selection { background: #dec6b2; color: #163d35; }
+.theme-announcement { background: #163d35; color: #fffaf2; }
+.theme-announcement .badge-pill {
+    background: #294e42;
+    border-color: #a7bb9b;
+    color: #fffaf2;
+}
+.theme-header, .theme-header.scrolled {
+    background: rgb(255 252 246 / 97%);
+    border-color: var(--theme-border);
+    box-shadow: 0 4px 18px rgb(22 61 53 / 4%);
+}
+.theme-logo-text, .theme-nav-link, .theme-nav-link:hover,
+.theme-nav-link.active, .theme-icon-btn, .theme-dropdown-link,
+.theme-drawer-link, .theme-drawer-accordion-btn, .theme-drawer-close-btn,
+.theme-drawer-user-info h5 { color: var(--theme-text); }
+.theme-nav-link.active::after { box-shadow: none; background: #b87550; }
+.theme-icon-btn { background: #edf0e8; }
+.theme-nav-item-dropdown .theme-dropdown-menu { border-color: var(--theme-border); }
+.theme-dropdown-link:hover { background: #edf0e8; }
+.theme-search-input, .theme-search-input:focus,
+.theme-drawer-search-input, .theme-drawer-search-input:focus {
+    color: var(--theme-text);
+    background: #f5f1e8;
+    width: 100%;
+}
+.theme-search-dropdown { max-width: min(320px, calc(100vw - 28px)); }
+.theme-mobile-drawer {
+    background: #fffcf6;
+    border-color: var(--theme-border);
+    box-shadow: 12px 0 36px rgb(22 61 53 / 15%);
+}
+.theme-drawer-sublink { color: #506158; }
+.theme-drawer-header, .theme-drawer-search { border-color: var(--theme-border); }
+.theme-drawer-close-btn { background: #edf0e8; }
+.theme-cart-badge { color: #fffaf2; }
+
+main :is(h1, h2, h3, h4, h5, h6) { color: #163d35 !important; }
+.about-hero, .contact-hero, .faq-hero {
+    background: radial-gradient(ellipse at 50% 0%, #e3e9dc, transparent 75%);
+    border-bottom: 1px solid var(--theme-border);
+}
+.about-hero h1, .contact-hero h1, .faq-hero h1, .policy-container h1 {
+    letter-spacing: -0.04em;
+    line-height: 1.15;
+    font-size: clamp(30px, 4vw, 48px);
+    text-wrap: balance;
+}
+.story-content p, .policy-body p, .policy-body ul { color: #506158; }
+.story-img-box { background: #e3e9dc; box-shadow: var(--shadow-card); }
+.value-icon, .contact-icon-box {
+    background: #e9eee2 !important;
+    color: #163d35 !important;
+    border-color: #ccd7c5 !important;
+}
+.value-card, .contact-card, .faq-item { box-shadow: var(--shadow-card); }
+.faq-item:hover { border-color: #8ca295; }
+.faq-trigger, .contact-label { color: #163d35; }
+.faq-cat-pill:hover, .faq-cat-pill.active { color: #fffaf2; }
+.faq-search-input, .contact-input-field, .contact-input-field:focus {
+    background: #fffdf9;
+    color: #163d35;
+    border-color: #a4b2a3;
+}
+input::placeholder, textarea::placeholder { color: #667269; opacity: 1; }
+.contact-info-row p[style*="25d366"] { color: #246444 !important; }
+main a[style*="25d366"] { color: #246444 !important; border-color: #246444 !important; }
+.alert-box-success { color: #1a5739; background: #e9f1e5; border-color: #729b76; }
+.alert-box-error { color: #8b2330; background: #f8e9e5; border-color: #ba7779; }
+.btn-primary { color: #fffaf2; box-shadow: none; }
+.btn-primary:hover { color: #fffaf2; box-shadow: var(--shadow-card); }
+.btn-outline { color: #163d35; border-color: #8ca295; background: transparent; }
+.btn-outline:hover { color: #163d35; background: #e9eee5; border-color: #163d35; }
+.policy-container { max-width: 900px; }
+.policy-meta { border-bottom: 2px solid #b87550; padding-bottom: 22px; }
+.policy-body { background: #fffcf6; padding: clamp(20px, 4vw, 40px); border: 1px solid var(--theme-border); border-radius: 20px; }
+.policy-body h2:first-child { margin-top: 0; }
+
+.theme-footer {
+    --theme-primary: #e8b898;
+    --theme-primary-hover: #f3caae;
+    --theme-gold: #e8b898;
+    --theme-text-secondary: #d0ddd3;
+    --theme-text-muted: #bbcdbf;
+    --theme-border: #48665a;
+    background: #163d35;
+    color: #d0ddd3;
+    border-top: 4px solid #b87550;
+}
+.theme-footer .theme-logo-text, .theme-footer-col h4, .theme-badge-text h5 { color: #fffaf2; }
+.theme-footer-link { color: #d0ddd3; }
+.theme-footer-link:hover, .theme-footer-link.highlight { color: #e8b898; }
+.theme-badge-icon { background: #294e42; border-color: #48665a; color: #e8b898; }
+.theme-footer-disclaimer { background: #20473d; border-color: #48665a; }
+.theme-newsletter-input { min-width: 0; background: #20473d; border-color: #739181; color: #fffaf2; }
+.theme-newsletter-input::placeholder { color: #c2d0c5; }
+.theme-newsletter-btn { background: #e8b898; color: #163d35; }
+.theme-payment-pill { background: #20473d; color: #d0ddd3; border-color: #48665a; }
+
+@media (min-width: 1025px) {
+    .theme-header-inner { flex-wrap: wrap; height: auto; min-height: 86px; gap: 12px 24px; padding-top: 16px; padding-bottom: 12px; }
+    .theme-nav { order: 3; width: 100%; justify-content: center; gap: clamp(18px, 2.2vw, 32px); }
+    .theme-header-actions { margin-left: auto; }
+}
+@media (max-width: 600px) {
+    .contact-card { padding: 22px 18px; }
+    .contact-info-row > div { min-width: 0; overflow-wrap: anywhere; }
+    .faq-trigger { padding: 18px; font-size: 15px; }
+    .faq-content { padding: 0 18px 20px; }
+    .faq-category-nav { gap: 8px; margin: 28px 0; }
+    .faq-cat-pill { padding: 8px 12px; }
+    .contact-input-field, .faq-search-input, .theme-drawer-search-input { font-size: 16px; }
+    .theme-header-inner { gap: 8px; }
+    .theme-header-actions { gap: 8px; }
+    .policy-container { padding-top: 36px; padding-bottom: 48px; }
+}

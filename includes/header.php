@@ -27,6 +27,9 @@ $currentPage = basename($_SERVER['SCRIPT_NAME'] ?? '');
 <!-- Universal Theme Styles -->
 <link rel="stylesheet" href="assets/css/responsive.css">
 <link rel="stylesheet" href="assets/css/theme.css?v=<?= filemtime(__DIR__ . '/../assets/css/theme.css') ?>">
+<?php if (in_array($currentPage, ['cbd-about.php', 'about.php', 'cbd-contact.php', 'contact.php', 'faq.php', 'privacy-policy.php', 'terms.php', 'shipping-policy.php', 'refund-policy.php'], true)): ?>
+<link rel="stylesheet" href="assets/css/information.css?v=<?= filemtime(__DIR__ . '/../assets/css/information.css') ?>">
+<?php endif; ?>
 
 <!-- Announcement Bar -->
 <div class="theme-announcement" role="region" aria-label="Store Announcement">
