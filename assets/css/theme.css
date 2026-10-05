@@ -284,6 +284,36 @@ button, input, select, textarea {
     transform: translateX(-50%) translateY(0);
 }
 
+.theme-nav-item-dropdown:focus-within .theme-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+}
+
+:focus-visible {
+    outline: 3px solid var(--theme-primary) !important;
+    outline-offset: 4px;
+}
+
+.theme-mobile-drawer[aria-hidden="true"] {
+    visibility: hidden;
+}
+
+.theme-mobile-drawer.open {
+    height: 100dvh;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
 .theme-dropdown-link {
     display: flex;
     align-items: center;

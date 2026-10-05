@@ -6,15 +6,15 @@ if (!isset($storeName)) {
     $storeName = Settings::get('store_name', 'KAMS HEMP');
 }
 $isLoggedIn = Auth::isCustomerLoggedIn();
-$currentUser = $isLoggedIn ? Auth::getUser(true) : null;
+$drawerUser = $isLoggedIn ? Auth::getUser(true) : null;
 $cartCount = isset($_SESSION['cart']) ? array_sum(array_column($_SESSION['cart'], 'qty')) : 0;
-$userWallet = (float)($currentUser['wallet_balance'] ?? 0);
+$userWallet = (float)($drawerUser['wallet_balance'] ?? 0);
 ?>
 <!-- Mobile Drawer Backdrop -->
 <div class="theme-mobile-backdrop" id="themeMobileBackdrop" aria-hidden="true"></div>
 
 <!-- Mobile Drawer Container -->
-<aside class="theme-mobile-drawer" id="themeMobileDrawer" aria-label="Mobile Navigation" role="dialog" aria-modal="true">
+<aside class="theme-mobile-drawer" id="themeMobileDrawer" aria-label="Mobile Navigation" role="dialog" aria-modal="true" aria-hidden="true" inert tabindex="-1">
     <!-- Drawer Header -->
     <div class="theme-drawer-header">
         <div class="theme-drawer-logo-text">
@@ -31,7 +31,7 @@ $userWallet = (float)($currentUser['wallet_balance'] ?? 0);
     <!-- Search in Drawer -->
     <div class="theme-drawer-search">
         <form action="cbd-products.php" method="GET" class="theme-drawer-search-form">
-            <input type="text" name="search" placeholder="Search formulations, balms, oils..." class="theme-drawer-search-input">
+            <input type="text" name="search" aria-label="Search products" placeholder="Search formulations, balms, oils..." class="theme-drawer-search-input">
             <button type="submit" class="theme-drawer-search-submit" aria-label="Search">
                 <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
                     <circle cx="11" cy="11" r="8"></circle>
@@ -45,7 +45,7 @@ $userWallet = (float)($currentUser['wallet_balance'] ?? 0);
     <?php if ($isLoggedIn): ?>
         <div class="theme-drawer-user-card">
             <div class="theme-drawer-user-info">
-                <h5>Hello, <?= htmlspecialchars($currentUser['first_name'] ?? 'Friend') ?></h5>
+                <h5>Hello, <?= htmlspecialchars($drawerUser['first_name'] ?? 'Friend') ?></h5>
                 <p>Wallet Cashback: ₹<?= number_format($userWallet) ?></p>
             </div>
             <a href="profile.php" style="font-size:12px; font-weight:700; color:var(--theme-primary); text-decoration:underline;">View</a>
@@ -66,14 +66,14 @@ $userWallet = (float)($currentUser['wallet_balance'] ?? 0);
 
         <!-- Category Accordion -->
         <div>
-            <button type="button" class="theme-drawer-accordion-btn" aria-expanded="false">
+            <button type="button" class="theme-drawer-accordion-btn" aria-expanded="false" aria-controls="themeDrawerCategories">
                 <div class="theme-drawer-accordion-btn-left">
                     <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
                     <span>Product Categories</span>
                 </div>
                 <svg class="theme-drawer-chevron" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
-            <div class="theme-drawer-accordion-content">
+            <div class="theme-drawer-accordion-content" id="themeDrawerCategories" inert>
                 <a href="category.php?cat=oils-tinctures" class="theme-drawer-sublink">Oils & Tinctures (Vijaya, CBD)</a>
                 <a href="category.php?cat=sleep-restorative" class="theme-drawer-sublink">Sleep & Restorative Drops</a>
                 <a href="category.php?cat=pain-relief-balms" class="theme-drawer-sublink">Pain Relief Balms & Topicals</a>

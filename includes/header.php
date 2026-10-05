@@ -14,7 +14,7 @@ require_once __DIR__ . '/seo.php';
 $storeName = Settings::get('store_name', 'KAMS HEMP');
 $announcementText = Settings::get('announcement_bar_text', '🌿 100% Certified Ayurvedic Vijaya Extracts • Free Express Shipping on orders above ₹3,999 • AYUSH Licensed');
 $isLoggedIn = Auth::isCustomerLoggedIn();
-$currentUser = $isLoggedIn ? Auth::getUser(true) : null;
+$headerUser = $isLoggedIn ? Auth::getUser(true) : null;
 $cartCount = isset($_SESSION['cart']) ? array_sum(array_column($_SESSION['cart'], 'qty')) : 0;
 
 $currentPage = basename($_SERVER['SCRIPT_NAME'] ?? '');
@@ -26,7 +26,7 @@ $currentPage = basename($_SERVER['SCRIPT_NAME'] ?? '');
 
 <!-- Universal Theme Styles -->
 <link rel="stylesheet" href="assets/css/responsive.css">
-<link rel="stylesheet" href="assets/css/theme.css">
+<link rel="stylesheet" href="assets/css/theme.css?v=<?= filemtime(__DIR__ . '/../assets/css/theme.css') ?>">
 
 <!-- Announcement Bar -->
 <div class="theme-announcement" role="region" aria-label="Store Announcement">
@@ -40,7 +40,7 @@ $currentPage = basename($_SERVER['SCRIPT_NAME'] ?? '');
 <header class="theme-header" role="banner">
     <div class="theme-container theme-header-inner">
         <!-- Mobile Hamburger Button -->
-        <button class="theme-icon-btn theme-hamburger-btn" type="button" aria-label="Open Navigation Menu" aria-controls="themeMobileDrawer">
+        <button class="theme-icon-btn theme-hamburger-btn" type="button" aria-label="Open Navigation Menu" aria-controls="themeMobileDrawer" aria-expanded="false">
             <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none">
                 <line x1="3" y1="6" x2="21" y2="6"></line>
                 <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -88,7 +88,7 @@ $currentPage = basename($_SERVER['SCRIPT_NAME'] ?? '');
             <!-- Search Box -->
             <div class="theme-header-search">
                 <form action="cbd-products.php" method="GET" style="margin:0;">
-                    <input type="text" name="search" class="theme-search-input" placeholder="Search Vijaya, drops, balms..." autocomplete="off">
+                    <input type="text" name="search" class="theme-search-input" aria-label="Search products" placeholder="Search Vijaya, drops, balms..." autocomplete="off">
                     <button type="submit" class="theme-search-btn" aria-label="Submit Search">
                         <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
                             <circle cx="11" cy="11" r="8"></circle>
@@ -109,7 +109,7 @@ $currentPage = basename($_SERVER['SCRIPT_NAME'] ?? '');
                 <div class="theme-dropdown-menu" style="right:0; left:auto; transform:none; min-width:200px;">
                     <?php if ($isLoggedIn): ?>
                         <div style="padding:8px 14px; font-size:12px; color:var(--theme-text-muted); border-bottom:1px solid var(--theme-border);">
-                            Signed in as<br><strong style="color:#fff;"><?= htmlspecialchars($currentUser['first_name'] ?? 'User') ?></strong>
+                            Signed in as<br><strong style="color:#fff;"><?= htmlspecialchars($headerUser['first_name'] ?? 'User') ?></strong>
                         </div>
                         <a href="profile.php" class="theme-dropdown-link">Dashboard / Orders</a>
                         <a href="addresses.php" class="theme-dropdown-link">Saved Addresses</a>

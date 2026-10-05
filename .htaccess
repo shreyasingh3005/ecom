@@ -15,6 +15,14 @@ RewriteEngine On
 # Prevent access to dotfiles
 RewriteRule (^\.|/\.) - [F]
 
+# Internal code, fixtures and maintenance tools must never be web endpoints.
+# These scripts remain available to developers through the CLI.
+RewriteRule ^(?:includes|scratch)(?:/|$) - [F,L,NC]
+RewriteRule ^(?:test_[^/]+|migrate)(?:\.php)?/?$ - [F,L,NC]
+<FilesMatch "^(?:admin_config|users|orders|inventory|settings)\.json$">
+    Require all denied
+</FilesMatch>
+
 # ==============================================================================
 # Route Aliases & Clean URLs
 # ==============================================================================

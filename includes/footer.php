@@ -143,4 +143,4 @@ $supportPhone = Settings::get('support_phone', '+91 98765 43210');
 <?php require_once __DIR__ . '/whatsapp_button.php'; ?>
 
 <!-- Universal Interactive Engine JS -->
-<script src="assets/js/theme.js"></script>
+<script src="assets/js/theme.js?v=<?= filemtime(__DIR__ . '/../assets/js/theme.js') ?>"></script>

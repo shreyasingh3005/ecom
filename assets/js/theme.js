@@ -36,16 +36,29 @@ function initMobileDrawer() {
 
     if (!drawer || !backdrop) return;
 
+    let previousFocus;
+    let previousOverflow = '';
     const openDrawer = () => {
+        previousFocus = document.activeElement;
+        previousOverflow = document.body.style.overflow;
+        drawer.inert = false;
+        drawer.setAttribute('aria-hidden', 'false');
+        hamburger?.setAttribute('aria-expanded', 'true');
         drawer.classList.add('open');
         backdrop.classList.add('open');
         document.body.style.overflow = 'hidden';
+        (closeBtn || drawer).focus();
     };
 
     const closeDrawer = () => {
+        if (!drawer.classList.contains('open')) return;
         drawer.classList.remove('open');
         backdrop.classList.remove('open');
-        document.body.style.overflow = '';
+        document.body.style.overflow = previousOverflow;
+        hamburger?.setAttribute('aria-expanded', 'false');
+        previousFocus?.focus();
+        drawer.inert = true;
+        drawer.setAttribute('aria-hidden', 'true');
     };
 
     if (hamburger) hamburger.addEventListener('click', openDrawer);
@@ -53,9 +66,28 @@ function initMobileDrawer() {
     if (backdrop) backdrop.addEventListener('click', closeDrawer);
 
     document.addEventListener('keydown', (e) => {
+        if (!drawer.classList.contains('open')) return;
         if (e.key === 'Escape' && drawer.classList.contains('open')) {
             closeDrawer();
         }
+        if (e.key === 'Tab') {
+            const focusable = [...drawer.querySelectorAll('a[href], button, input, [tabindex="0"]')]
+                .filter(el => !el.disabled && !el.closest('[inert]') && el.getClientRects().length);
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+            if (!first) { e.preventDefault(); drawer.focus(); return; }
+            if (e.shiftKey && (document.activeElement === first || !drawer.contains(document.activeElement))) {
+                e.preventDefault(); last.focus();
+            } else if (!e.shiftKey && (document.activeElement === last || !drawer.contains(document.activeElement))) {
+                e.preventDefault(); first.focus();
+            }
+        }
+    });
+    drawer.addEventListener('click', e => {
+        if (e.target.closest('a[href]')) closeDrawer();
+    });
+    window.matchMedia('(min-width: 1025px)').addEventListener('change', e => {
+        if (e.matches) closeDrawer();
     });
 
     // Accordion inside drawer
@@ -63,8 +95,10 @@ function initMobileDrawer() {
     const accordionContent = document.querySelector('.theme-drawer-accordion-content');
     if (accordionBtn && accordionContent) {
         accordionBtn.addEventListener('click', () => {
-            accordionBtn.classList.toggle('expanded');
-            accordionContent.classList.toggle('expanded');
+            const expanded = accordionBtn.classList.toggle('expanded');
+            accordionContent.classList.toggle('expanded', expanded);
+            accordionContent.inert = !expanded;
+            accordionBtn.setAttribute('aria-expanded', String(expanded));
         });
     }
 }
@@ -84,8 +118,10 @@ function initLiveSearch() {
         }
 
         let debounceTimer;
+        let requestVersion = 0;
         input.addEventListener('input', (e) => {
             const query = e.target.value.trim();
+            const version = ++requestVersion;
             clearTimeout(debounceTimer);
 
             if (query.length < 2) {
@@ -96,18 +132,37 @@ function initLiveSearch() {
 
             debounceTimer = setTimeout(() => {
                 fetch(`cbd-products.php?search=${encodeURIComponent(query)}&format=json`)
-                    .then(res => res.json())
+                    .then(res => { if (!res.ok) throw new Error('Search unavailable'); return res.json(); })
                     .then(data => {
-                        if (data && data.length > 0) {
-                            dropdown.innerHTML = data.slice(0, 5).map(p => `
-                                <a href="product_details.php?id=${p.id}" class="theme-dropdown-link" style="display:flex; align-items:center; gap:10px; padding:8px; border-bottom:1px solid rgba(255,255,255,0.05);">
-                                    <img src="${p.image || 'uploads/products/default.webp'}" alt="${p.title}" style="width:36px; height:36px; object-fit:cover; border-radius:6px;">
-                                    <div style="flex:1; overflow:hidden;">
-                                        <div style="font-size:13px; font-weight:700; color:#fff; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${p.title}</div>
-                                        <div style="font-size:12px; color:#00ffcc; font-weight:600;">${p.price}</div>
-                                    </div>
-                                </a>
-                            `).join('') + `<a href="cbd-products.php?search=${encodeURIComponent(query)}" style="display:block; text-align:center; padding:10px; color:#e5c378; font-size:12px; font-weight:700;">View all results →</a>`;
+                        if (version !== requestVersion) return;
+                        dropdown.replaceChildren();
+                        if (Array.isArray(data) && data.length > 0) {
+                            data.slice(0, 5).forEach(p => {
+                                const link = document.createElement('a');
+                                link.href = `product_details.php?id=${encodeURIComponent(p.id)}`;
+                                link.className = 'theme-dropdown-link';
+                                const img = document.createElement('img');
+                                // Only permit image URLs with ordinary HTTP(S) protocols.
+                                const imageUrl = new URL(p.image || 'uploads/products/default.webp', document.baseURI);
+                                if (['http:', 'https:'].includes(imageUrl.protocol)) img.src = imageUrl.href;
+                                img.alt = String(p.title || '');
+                                img.width = 36;
+                                img.height = 36;
+                                img.style.cssText = 'width:36px;height:36px;object-fit:cover;border-radius:6px;';
+                                const details = document.createElement('div');
+                                const title = document.createElement('div');
+                                title.textContent = String(p.title || '');
+                                const price = document.createElement('div');
+                                price.textContent = String(p.price || '');
+                                details.append(title, price);
+                                link.append(img, details);
+                                dropdown.append(link);
+                            });
+                            const allResults = document.createElement('a');
+                            allResults.href = `cbd-products.php?search=${encodeURIComponent(query)}`;
+                            allResults.className = 'theme-dropdown-link';
+                            allResults.textContent = 'View all results →';
+                            dropdown.append(allResults);
                             dropdown.style.display = 'block';
                         } else {
                             dropdown.innerHTML = `<div style="padding:14px; font-size:13px; color:#94a3b8; text-align:center;">No matching formulations found</div>`;
@@ -115,7 +170,7 @@ function initLiveSearch() {
                         }
                     })
                     .catch(() => {
-                        dropdown.style.display = 'none';
+                        if (version === requestVersion) dropdown.style.display = 'none';
                     });
             }, 250);
         });
@@ -144,7 +199,13 @@ window.showToast = function(message, type = 'success') {
     const icon = type === 'success' ? '✓' : (type === 'error' ? '✕' : 'ℹ');
 
     toast.style.cssText = `background:${bg}; border:1px solid ${borderColor}; color:#ffffff; padding:12px 18px; border-radius:10px; font-size:13.5px; font-weight:600; display:flex; align-items:center; gap:10px; box-shadow:0 10px 25px rgba(0,0,0,0.6); pointer-events:auto; transform:translateY(20px); opacity:0; transition:all 0.3s cubic-bezier(0.16, 1, 0.3, 1);`;
-    toast.innerHTML = `<span style="background:${borderColor}; color:#000; width:20px; height:20px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:11px; font-weight:800;">${icon}</span> <span>${message}</span>`;
+    toast.setAttribute('role', type === 'error' ? 'alert' : 'status');
+    const iconElement = document.createElement('span');
+    iconElement.textContent = icon;
+    iconElement.setAttribute('aria-hidden', 'true');
+    const messageElement = document.createElement('span');
+    messageElement.textContent = String(message);
+    toast.append(iconElement, messageElement);
 
     container.appendChild(toast);
     requestAnimationFrame(() => {

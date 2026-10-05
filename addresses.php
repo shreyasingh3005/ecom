@@ -19,12 +19,14 @@ if ($isLoggedIn) {
     $userId = Auth::getUserId();
     $currentUser = Auth::getUser();
 } else {
-    // If not logged in, fetch default customer user or redirect
-    $stmt = $db->query("SELECT * FROM users ORDER BY id ASC LIMIT 1");
-    $currentUser = $stmt->fetch();
-    if ($currentUser) {
-        $userId = (int)$currentUser['id'];
-    }
+    header('Location: profile.php?tab=login');
+    exit;
+}
+
+// A stale session must not expose or modify another customer's addresses.
+if (!$currentUser || !$userId) {
+    header('Location: profile.php?tab=login');
+    exit;
 }
 
 $email = $currentUser['email'] ?? '';
