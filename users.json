@@ -1,0 +1,56 @@
+[
+    {
+        "first_name": "Abhinav",
+        "last_name": "singh",
+        "email": "namahyatra0@gmail.com",
+        "phone": "9990051200",
+        "password": "$2y$10$z1lqxSTGlnpI6.9Qqk.n7OR.4Blkbobr2URN9ztlkxG3CZIL5ha9y",
+        "addresses": [
+            {
+                "id": "addr_6aa212d12cc2a",
+                "is_default": true,
+                "name": "Abhinav",
+                "phone": "9990051250",
+                "street": "Dwarka",
+                "city": "New Delhi",
+                "state": "Delhi",
+                "zip": "110043",
+                "country": "India"
+            },
+            {
+                "id": "addr_6aa6a54a26bcf",
+                "title": "Noida",
+                "street": "Supernovaaaa",
+                "city": "New Delhi",
+                "state": "Delhi",
+                "zip": "110043"
+            }
+        ],
+        "referral_code": "ABHI8506",
+        "referral_count": 3,
+        "wallet_balance": 529.8000000000001
+    },
+    {
+        "first_name": "Anshul",
+        "last_name": "Gupta",
+        "email": "iamanshulgupta98@gmail.com",
+        "phone": "7417458187",
+        "password": "$2y$10$5o7i6qKmh60LEXuYq1wX2eazA0QKT1D1B8N52jgLCT1JipwL9MP6i"
+    },
+    [
+        {
+            "name": "Test User",
+            "email": "user@gmail.com",
+            "username": "testuser",
+            "password": "user123"
+        }
+    ],
+    {
+        "first_name": "kaka",
+        "last_name": "singh",
+        "email": "dolivexstore@gmail.com",
+        "phone": "9990051250",
+        "password": "$2y$10$J242N8dDJQCqCbHRIsM.ee9OBspIKj.XZCjRh4b7aCfCn4d\/NDzmS",
+        "addresses": []
+    }
+]

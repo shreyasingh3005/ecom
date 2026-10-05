@@ -1,0 +1,44 @@
+# Options
+Options -Indexes
+Options +SymLinksIfOwnerMatch
+
+# Enable Rewrite Engine
+RewriteEngine On
+
+# ==============================================================================
+# Security: Block direct browser access to sensitive files
+# ==============================================================================
+<FilesMatch "^\.(env|git|htaccess)|(\.sql|\.log|composer\.json|composer\.lock)$">
+    Require all denied
+</FilesMatch>
+
+# Prevent access to dotfiles
+RewriteRule (^\.|/\.) - [F]
+
+# ==============================================================================
+# Route Aliases & Clean URLs
+# ==============================================================================
+
+# Route /admin and /admin/ to admin.php
+RewriteRule ^admin/?$ admin.php [L,QSA]
+
+# Route /products to cbd-products.php
+RewriteRule ^products/?$ cbd-products.php [L,QSA]
+
+# Route /about to cbd-about.php
+RewriteRule ^about/?$ cbd-about.php [L,QSA]
+
+# Route /contact to cbd-contact.php
+RewriteRule ^contact/?$ cbd-contact.php [L,QSA]
+
+# Route /track or /tracking to order-tracking.php
+RewriteRule ^track(ing)?/?$ order-tracking.php [L,QSA]
+
+# ==============================================================================
+# General .php Extension Removal for Clean URLs
+# ==============================================================================
+# Check if file exists with .php extension
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^([^\.]+)$ $1.php [NC,L,QSA]

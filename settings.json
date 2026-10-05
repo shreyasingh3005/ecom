@@ -1,0 +1,21 @@
+{
+    "store_name": "CBD Store",
+    "support_email": "support@kamshemp.com",
+    "support_phone": "+91 98765 43210",
+    "currency": "INR",
+    "tax_rate": "8",
+    "enable_razorpay": true,
+    "razorpay_key": "",
+    "enable_stripe": false,
+    "stripe_key": "",
+    "free_shipping_threshold": "3999",
+    "standard_delivery_fee": "250",
+    "express_delivery_fee": "300",
+    "meta_title": "KAMS HEMP | Premium Vedic Cannabis Extracts",
+    "meta_description": "",
+    "ga_tracking_id": "G-XXXXXXXXXX",
+    "maintenance_mode": false,
+    "require_email_verification": true,
+    "two_factor_auth": false,
+    "referral_discount_percent": "10"
+}

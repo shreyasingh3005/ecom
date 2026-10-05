@@ -1,0 +1,131 @@
+[
+    {
+        "id": 1,
+        "name": "Premium Vijaya Extract 1500mg",
+        "sku": "KAMS-VE-1500",
+        "category": "Oils & Tinctures",
+        "price": "\u20b92,999",
+        "stock": 145,
+        "status": "Active",
+        "img": "uploads\/products\/1789149061_pri_Hebe_Drift_Mango__Full_Spectrum_Vijaya_Gummies_50_mg.webp",
+        "description": "Premium Vijaya Extract 1500mg",
+        "images": [
+            "uploads\/products\/1789149061_pri_Hebe_Drift_Mango__Full_Spectrum_Vijaya_Gummies_50_mg.webp",
+            "uploads\/products\/1789149061_sec_Hebe_Drift_Mango__Full_Spectrum_CBD_Gummies_50mg.webp",
+            "uploads\/products\/1789149061_rem_0_Hebe_Drift_Mango__Full_Spectrum_CBD_Gummies_50_mg.webp"
+        ],
+        "mrp": "\u20b93,999",
+        "sale_badge": "Hot Deal"
+    },
+    {
+        "id": 2,
+        "name": "Deep Sleep Restorative Drops",
+        "sku": "KAMS-DS-001",
+        "category": "Edibles & Wellness",
+        "price": "\u20b91,499",
+        "stock": 12,
+        "status": "Low Stock",
+        "img": "uploads\/products\/1789195787_pri_Hebe_Drift_Mango__Full_Spectrum_CBD_Gummies_50mg.webp",
+        "description": "Deep Sleep Restorative Drops",
+        "images": [
+            "uploads\/products\/1789195787_pri_Hebe_Drift_Mango__Full_Spectrum_CBD_Gummies_50mg.webp",
+            "uploads\/products\/1789195787_sec_Hebe_Drift_Mango__Full_Spectrum_Vijaya_Gummies_50_mg.webp",
+            "uploads\/products\/1789195787_rem_0_Hebe_Drift_Mango__Full_Spectrum_CBD_Gummies_50_mg.webp"
+        ],
+        "mrp": "\u20b92,000",
+        "sale_badge": "Hot Deal"
+    },
+    {
+        "id": 3,
+        "name": "Full Spectrum Pain Relief Balm",
+        "sku": "KAMS-PB-500",
+        "category": "Topicals",
+        "price": "\u20b9999",
+        "stock": 0,
+        "status": "Out of Stock",
+        "img": "uploads\/products\/1789195821_pri_Hebe_Drift_Mango__Full_Spectrum_CBD_Gummies_50_mg.webp",
+        "description": "Deep Sleep Restorative Drops",
+        "images": [
+            "uploads\/products\/1789195821_pri_Hebe_Drift_Mango__Full_Spectrum_CBD_Gummies_50_mg.webp",
+            "uploads\/products\/1789195821_sec_Hebe_Drift_Mango__Full_Spectrum_Vijaya_Gummies_50_mg.webp",
+            "uploads\/products\/1789195821_rem_0_Hebe_Drift_Mango__Full_Spectrum_CBD_Gummies_50mg.webp"
+        ]
+    },
+    {
+        "id": 4,
+        "name": "Athletic Recovery Tincture",
+        "sku": "KAMS-AR-002",
+        "category": "Oils & Tinctures",
+        "price": "\u20b93,499",
+        "stock": 89,
+        "status": "Active",
+        "img": "uploads\/products\/1789196410_pri_Hebe_Float_Watermelon_Vijaya_Gummies.webp",
+        "description": "Athletic Recovery Tincture",
+        "images": [
+            "uploads\/products\/1789196410_pri_Hebe_Float_Watermelon_Vijaya_Gummies.webp",
+            "uploads\/products\/1789196410_sec_Hebe_Float_Wild_Watermelon_Vijaya_Gummies_200mg_per_gummy.webp",
+            "uploads\/products\/1789196410_rem_0_Hebe_Float_Wild_Watermelon_CBD_THC_Gummies_200_mg_per_gummy.webp"
+        ]
+    },
+    {
+        "id": 5,
+        "name": "Calming Pet CBD Oil",
+        "sku": "KAMS-PT-100",
+        "category": "Pet Care",
+        "price": "\u20b91,299",
+        "stock": 250,
+        "status": "Active",
+        "img": "uploads\/products\/1789197055_pri_Hebe-Lift_Berry-Buzz_vijaya_gummies.webp",
+        "description": "Calming Pet CBD Oil",
+        "images": [
+            "uploads\/products\/1789197055_pri_Hebe-Lift_Berry-Buzz_vijaya_gummies.webp",
+            "uploads\/products\/1789197055_sec_Hebe_Float_Wild_Watermelon_CBD_THC_Gummies_200_mg_per_gummy.webp",
+            "uploads\/products\/1789197055_rem_0_Hebe-Lift_Berry-Buzz_vijaya_gummies.webp"
+        ],
+        "mrp": ""
+    },
+    {
+        "id": 6,
+        "name": "Hemp Hearts Seeds 250g",
+        "sku": "KAMS-HH-250",
+        "category": "Edibles & Wellness",
+        "price": "\u20b9499",
+        "stock": 45,
+        "status": "Active",
+        "img": "https:\/\/images.unsplash.com\/photo-1596492784531-6e6eb5ea9993?auto=format&fit=crop&w=80&h=80&q=80"
+    },
+    {
+        "id": 1789148293,
+        "name": "Premium Vijaya Extract 1500mg",
+        "sku": "KAMS-VE-1500",
+        "category": "Edibles & Wellness",
+        "price": "\u20b93,999",
+        "stock": 1000,
+        "status": "Active",
+        "description": "Premium Vijaya Extract 1500mg",
+        "img": "uploads\/products\/1789195874_pri_Hebe_Drift_Mango__Full_Spectrum_CBD_Gummies_50_mg.webp",
+        "images": [
+            "uploads\/products\/1789195874_pri_Hebe_Drift_Mango__Full_Spectrum_CBD_Gummies_50_mg.webp",
+            "uploads\/products\/1789195874_sec_Hebe_Drift_Mango__Full_Spectrum_Vijaya_Gummies_50_mg.webp",
+            "uploads\/products\/1789195874_rem_0_Hebe_Drift_Mango__Full_Spectrum_CBD_Gummies_50_mg.webp"
+        ]
+    },
+    {
+        "id": 1789148297,
+        "name": "Premium Vijaya Extract 1500mg",
+        "sku": "KAMS-VE-1500",
+        "category": "Edibles & Wellness",
+        "price": "\u20b93,999",
+        "stock": 1000,
+        "status": "Active",
+        "description": "Premium Vijaya Extract 1500mg",
+        "img": "uploads\/products\/1789148297_pri_Hebe_Drift_Mango__Full_Spectrum_Vijaya_Gummies_50_mg.webp",
+        "images": [
+            "uploads\/products\/1789148297_pri_Hebe_Drift_Mango__Full_Spectrum_Vijaya_Gummies_50_mg.webp",
+            "uploads\/products\/1789148297_sec_Hebe_Drift_Mango__Full_Spectrum_CBD_Gummies_50mg.webp",
+            "uploads\/products\/1789148297_rem_0_Hebe_Drift_Mango__Full_Spectrum_CBD_Gummies_50_mg.webp"
+        ],
+        "mrp": "\u20b94,599",
+        "sale_badge": "Hot Deal"
+    }
+]

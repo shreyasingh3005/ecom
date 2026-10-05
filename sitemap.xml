@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>http://localhost/ecom/</loc>
+        <lastmod><?= date('Y-m-d') ?></lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>http://localhost/ecom/cbd-products.php</loc>
+        <lastmod><?= date('Y-m-d') ?></lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>http://localhost/ecom/b2b.php</loc>
+        <lastmod><?= date('Y-m-d') ?></lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>http://localhost/ecom/blog.php</loc>
+        <lastmod><?= date('Y-m-d') ?></lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>http://localhost/ecom/faq.php</loc>
+        <lastmod><?= date('Y-m-d') ?></lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>http://localhost/ecom/testimonials.php</loc>
+        <lastmod><?= date('Y-m-d') ?></lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>http://localhost/ecom/cbd-about.php</loc>
+        <lastmod><?= date('Y-m-d') ?></lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>http://localhost/ecom/cbd-contact.php</loc>
+        <lastmod><?= date('Y-m-d') ?></lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>http://localhost/ecom/shipping-policy.php</loc>
+        <lastmod><?= date('Y-m-d') ?></lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>http://localhost/ecom/refund-policy.php</loc>
+        <lastmod><?= date('Y-m-d') ?></lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>http://localhost/ecom/privacy-policy.php</loc>
+        <lastmod><?= date('Y-m-d') ?></lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>http://localhost/ecom/terms.php</loc>
+        <lastmod><?= date('Y-m-d') ?></lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+</urlset>

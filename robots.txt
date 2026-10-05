@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Disallow: /admin.php
+Disallow: /admin_*.php
+Disallow: /inventory.php
+Disallow: /users.php
+Disallow: /analytics.php
+Disallow: /settings.php
+Disallow: /scratch/
+Disallow: /api/
+
+Sitemap: http://localhost/ecom/sitemap.xml
